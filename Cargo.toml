@@ -1,0 +1,9 @@
+[workspace]
+
+members = [
+    "edge-core",
+    "edge-hub",
+    "edge-let",
+    "edge-model",
+    "module-sdk",
+]
