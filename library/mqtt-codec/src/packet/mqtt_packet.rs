@@ -3,3 +3,7 @@ struct Payload {}
 
 // 可配置Packet
 struct Config {}
+
+struct Qos {}
+
+struct ReasonCode {}

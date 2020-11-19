@@ -6,4 +6,5 @@ members = [
     "edge-let",
     "edge-model",
     "module-sdk",
+    "library/mqtt-codec"
 ]
