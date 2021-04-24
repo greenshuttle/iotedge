@@ -11,5 +11,5 @@ tokio = { version = "0.3", features = ["full"] }
 tonic = "0.3"
 prost = "0.6"
 rumqttc = "0.2.0"
-rusqlite = "0.24.2"
+rusqlite = { version = "0.24.2", features = ["bundled"] }
 edge-model = { version = "0.1.0", path = "../edge-model" }
