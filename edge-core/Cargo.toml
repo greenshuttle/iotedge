@@ -7,9 +7,10 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-tokio = { version = "0.3", features = ["full"] }
-tonic = "0.3"
-prost = "0.6"
-rumqttc = "0.2.0"
-rusqlite = { version = "0.24.2", features = ["bundled"] }
+anyhow = "1.0.40"
+tokio = { version = "1.5.0", features = ["full"] }
+tonic = "0.4.2"
+prost = "0.7.0"
+rumqttc = "0.5.0"
+rusqlite = { version = "0.25.1", features = ["bundled"] }
 edge-model = { version = "0.1.0", path = "../edge-model" }
