@@ -1,5 +1,5 @@
-struct DeviceProfile {}
+pub struct DeviceProfile {}
 
-struct ResourceProfile {}
+pub struct ResourceProfile {}
 
-struct ResourceValueProfile {}
+pub struct ResourceValueProfile {}
