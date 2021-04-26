@@ -4,7 +4,7 @@ enum ResourceScheme {
     Command,
 }
 
-struct DeviceResource {
+pub struct DeviceResource {
     id: i32,
     name: String,
     description: String,

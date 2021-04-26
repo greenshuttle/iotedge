@@ -1,24 +1,25 @@
 use std::collections::HashMap;
+use crate::models::device::device_resource;
 
 struct Device {
     id: i32,
     name: String,
     address: Addressable,
     namespace: String,
-    resources: Vec(DeviceResource),
+    resource: device_resource::DeviceResource,
     properties: HashMap<String, String>,
 }
 
 struct Addressable {}
 
 impl Device {
-    fn new(id: i32) -> Self {
+    fn new(id: i32, resource : device_resource::DeviceResource) -> Self {
         Device {
             id,
-            name,
+            name:  "Pascal".to_string(),
             address: Addressable {},
-            namespace,
-            resources,
+            namespace: "Namespace".to_string(),
+            resource,
             properties: HashMap::new(),
         }
     }
