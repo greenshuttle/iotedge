@@ -13,12 +13,10 @@ use crate::models::device::resource_attribute_properties::AccessMode::{ReadOnly,
 pub struct Properties {
     value_type: Type,
     access_mode: AccessMode,
-    default_value: str,
-    base: str,
+    default_value: String,
+    base: String,
     scale: f64,
     offset: u64,
-
-
 }
 
 pub enum Type {
@@ -41,7 +39,7 @@ impl Display for AccessMode {
 }
 
 impl AccessMode {
-    pub fn from_bits(bits: u8) -> PropertiesAccessMode {
+    pub fn from_bits(bits: u8) -> AccessMode {
         match bits {
             0 => ReadOnly,
             1 => ReadWrite,
