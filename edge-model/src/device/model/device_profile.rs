@@ -1,30 +1,26 @@
 use std::collections::HashMap;
-use crate::models::device::device_resource;
+use crate::device::model::device_resource;
 
-struct Device {
+pub struct DeviceProfile {
     id: i32,
     name: String,
-    address: Addressable,
     namespace: String,
     resource: device_resource::DeviceResource,
     properties: HashMap<String, String>,
 }
 
-struct Addressable {}
-
-impl Device {
+impl DeviceProfile {
     fn new(id: i32, resource : device_resource::DeviceResource) -> Self {
-        Device {
+        DeviceProfile {
             id,
             name:  "Pascal".to_string(),
-            address: Addressable {},
             namespace: "Namespace".to_string(),
             resource,
             properties: HashMap::new(),
         }
     }
 
-    pub fn add_device_properties(&mut self, field_name: String, field_value: String) -> Option<String> {
+    pub fn add_device_profile_properties(&mut self, field_name: String, field_value: String) -> Option<String> {
         self.properties.insert(field_name, field_value)
     }
 }

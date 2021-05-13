@@ -1,6 +1,6 @@
 use std::fmt;
 use std::fmt::{Display, Formatter};
-use crate::models::device::resource_attribute_properties::AccessMode::{ReadOnly, ReadWrite};
+use crate::device::model::resource_attribute_properties::AccessMode::{ReadOnly, ReadWrite};
 
 /// + type - Required. The data type of the value. Supported types are bool, int8 - int64, uint8 - uint64, float32, float64, string, binary and arrays of the primitive types (ints, floats, bool). Arrays are specified as eg. float32array, boolarray etc.
 /// + readWrite - R, RW, or W indicating whether the value is readable or writable.
