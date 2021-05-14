@@ -1,9 +1,16 @@
-mod store;
+mod server;
+mod shadow;
+mod internal;
+mod metadata;
+mod security;
 
-use store::rusqlite;
+use internal::store::rusqlite;
+use edge_model;
+#[cfg(feature = "edge-mqtt")]
+use mqtt_server::server as m_server;
 
 fn main() {
-    // 1. init store
+    // 1. init internal.store
     let result = rusqlite::initial_store();
     match result {
         Ok(()) => println!(),
@@ -11,12 +18,18 @@ fn main() {
     }
 
     // 2. init core conn to the edge-hub
-    let ctx = zmq::Context::new();
-    let socket = ctx.socket(zmq::REQ).unwrap();
-    socket.connect("tcp://127.0.0.1:1234").unwrap();
-    socket.send("hello world!", 0).unwrap();
-    socket.disconnect("tcp://127.0.0.1:1234").unwrap();
+    // let ctx = zmq::Context::new();
+    // let socket = ctx.socket(zmq::REQ).unwrap();
+    // socket.connect("tcp://127.0.0.1:1234").unwrap();
+    // socket.send("hello world!", 0).unwrap();
+    // socket.disconnect("tcp://127.0.0.1:1234").unwrap();
 
     // 3. init mqtt conn from edge-hub to the cloud-pub
-    // 4. inti http server
+    // 4. inti mqtt server
+    inti_mqtt_server();
+}
+
+fn inti_mqtt_server() {
+    #[cfg(feature = "edge-mqtt")]
+        m_server::say_hi();
 }

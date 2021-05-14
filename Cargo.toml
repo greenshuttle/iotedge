@@ -2,9 +2,11 @@
 
 members = [
     "edge-core",
+    "edge-core/cmd/edge-core-server",
+    "edge-core/components/mqtt-server",
     "edge-hub",
     "edge-let",
     "edge-model",
     "module-sdk",
-    "library/mqtt-codec"
+    "library/mqtt-codec",
 ]
