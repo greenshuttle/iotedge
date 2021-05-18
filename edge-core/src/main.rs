@@ -34,3 +34,5 @@ fn inti_mqtt_server() {
     #[cfg(feature = "edge-mqtt")]
         m_server::say_hi();
 }
+
+
