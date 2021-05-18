@@ -8,7 +8,7 @@ struct Person {
 }
 
 pub fn initial_store() -> Result<(), Error> {
-    let conn = Connection::open("cats.db")?;
+    let conn = Connection::open("store.db")?;
     conn.execute(
         "CREATE TABLE person (
                   id              INTEGER PRIMARY KEY,

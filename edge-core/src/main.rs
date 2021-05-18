@@ -25,6 +25,7 @@ fn main() {
     // socket.disconnect("tcp://127.0.0.1:1234").unwrap();
 
     // 3. init mqtt conn from edge-hub to the cloud-pub
+    shadow::device_client::create_mqtt_client();
     // 4. inti mqtt server
     inti_mqtt_server();
 }
