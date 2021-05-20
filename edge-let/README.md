@@ -1,4 +1,4 @@
-## Edge-Hub
+## Edge-Let
 **install wasmtime**
 ```bash
 curl https://wasmtime.dev/install.sh -sSf | bash
