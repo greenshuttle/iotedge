@@ -4,7 +4,6 @@ use std::time::Duration;
 use log::info;
 use log4rs;
 
-#[tokio::main(worker_threads = 1)]
 pub async fn create_mqtt_client() {
     log4rs::init_file("edge-core/log4rs.yaml", Default::default()).unwrap();
     // 上报客户端
