@@ -1,6 +1,6 @@
-mod house;
-pub use house::eat_at_restaurant;
+mod servers;
+mod config;
 
 fn main() {
-    eat_at_restaurant();
+    servers::start();
 }

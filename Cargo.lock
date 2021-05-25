@@ -464,11 +464,14 @@ name = "edge-core"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "edge-metadata",
  "edge-model",
+ "edge-streaming",
  "log",
  "log4rs",
  "mqtt-server",
  "prost",
+ "rmp",
  "rumqttc",
  "rusqlite",
  "tokio",
@@ -483,6 +486,12 @@ version = "0.1.0"
 [[package]]
 name = "edge-hub"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "rmp",
+ "tokio",
+ "zmq",
+]
 
 [[package]]
 name = "edge-let"
@@ -494,7 +503,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "edge-metadata"
+version = "0.1.0"
+
+[[package]]
 name = "edge-model"
+version = "0.1.0"
+
+[[package]]
+name = "edge-streaming"
 version = "0.1.0"
 
 [[package]]
@@ -1418,6 +1435,16 @@ dependencies = [
  "untrusted",
  "web-sys",
  "winapi",
+]
+
+[[package]]
+name = "rmp"
+version = "0.8.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0f10b46df14cf1ee1ac7baa4d2fbc2c52c0622a4b82fa8740e37bc452ac0184f"
+dependencies = [
+ "byteorder",
+ "num-traits",
 ]
 
 [[package]]

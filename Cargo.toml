@@ -4,6 +4,8 @@ members = [
     "edge-core",
     "edge-core/cmd/edge-core-server",
     "edge-core/components/mqtt-server",
+    "edge-core/components/edge-streaming",
+    "edge-core/components/edge-metadata",
     "edge-hub",
     "edge-let",
     "edge-model",

@@ -1,12 +1,13 @@
-mod server;
 mod shadow;
 mod internal;
-mod metadata;
 mod security;
+mod networks;
+mod streaming;
+mod metadata;
 
 use internal::store::rusqlite;
 use edge_model;
-#[cfg(feature = "edge-mqtt")]
+#[cfg(feature = "mqtt")]
 use mqtt_server::server as m_server;
 
 #[tokio::main]
@@ -30,12 +31,12 @@ async fn main() {
         shadow::device_client::create_mqtt_client().await;
     });
 
-    // 4. inti mqtt server
+    // 4. inti mqtt networks.servers
     inti_mqtt_server();
 }
 
 fn inti_mqtt_server() {
-    #[cfg(feature = "edge-mqtt")]
+    #[cfg(feature = "mqtt")]
         m_server::say_hi();
 }
 
