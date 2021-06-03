@@ -1,7 +1,7 @@
 pub struct Message {
     header: MessageHeader,
     router: MessageRouter,
-    body: dyn Type,
+    body: Vec<u8>,
 }
 
 pub trait Type {}

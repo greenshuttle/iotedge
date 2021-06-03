@@ -11,3 +11,4 @@ anyhow = "1.0.40"
 tokio = { version = "1.6.0", features = ["full"] }
 zmq = { version = "0.9.2", features = ["vendored"] }
 rmp = "0.8"
+pulsar = "3.0"
