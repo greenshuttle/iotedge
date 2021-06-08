@@ -1,7 +1,9 @@
 use std::thread;
 use std::time::Duration;
+use log::{info, warn};
 
 pub fn start() {
+    info!("zmq server starting...");
     let context = zmq::Context::new();
     let responder = context.socket((zmq::REP)).unwrap();
     responder.bind("tcp://*:5555");

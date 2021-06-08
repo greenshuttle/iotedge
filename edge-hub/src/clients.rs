@@ -1,15 +1,12 @@
 pub mod kafka;
 
-use super::config;
+use super::config::config::{ ClientProtocol, EdgeHubConfig };
 
-pub fn start() {
-    let edge_hub_config = config::EdgeHubConfig::new(config::config::ClientProtocol::KAFKA);
-    let protocol = config::EdgeHubConfig::get_hub_enabled_server_protocol(&edge_hub_config);
+pub fn start(edge_hub_config: &EdgeHubConfig) {
+    let protocol = EdgeHubConfig::get_hub_enabled_client_protocol(edge_hub_config);
 
     match protocol {
-        config::Protocol::ZMQ => start_zmq_server(),
-        Protocol::WS => {}
-        Protocol::QUIC => {}
-        Protocol::MQTT => {}
+        ClientProtocol::KAFKA => { println!("Kafka client is enabled!")}
+        ClientProtocol::PULSAR => {}
     }
 }
