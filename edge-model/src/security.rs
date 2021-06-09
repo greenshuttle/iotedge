@@ -1,6 +1,4 @@
 mod namespace;
 mod policy;
 
-pub mod security {
-
-}
+pub mod security {}

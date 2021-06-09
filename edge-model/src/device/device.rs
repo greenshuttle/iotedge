@@ -1,5 +1,5 @@
-use std::collections::HashMap;
 use crate::device::model::device_profile;
+use std::collections::HashMap;
 
 struct Device {
     id: i32,
@@ -13,10 +13,10 @@ struct Device {
 struct Addressable {}
 
 impl Device {
-    fn new(id: i32, profile : device_profile::DeviceProfile) -> Self {
+    fn new(id: i32, profile: device_profile::DeviceProfile) -> Self {
         Device {
             id,
-            name:  "Pascal".to_string(),
+            name: "Pascal".to_string(),
             address: Addressable {},
             namespace: "Namespace".to_string(),
             profile,
@@ -24,7 +24,11 @@ impl Device {
         }
     }
 
-    pub fn add_device_properties(&mut self, field_name: String, field_value: String) -> Option<String> {
+    pub fn add_device_properties(
+        &mut self,
+        field_name: String,
+        field_value: String,
+    ) -> Option<String> {
         self.properties.insert(field_name, field_value)
     }
 }

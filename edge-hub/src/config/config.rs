@@ -8,12 +8,16 @@ pub struct EdgeHubConfig {
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum ServerProtocol {
-    ZMQ, WS, QUIC, MQTT
+    ZMQ,
+    WS,
+    QUIC,
+    MQTT,
 }
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum ClientProtocol {
-    KAFKA, PULSAR
+    KAFKA,
+    PULSAR,
 }
 
 impl FromStr for ServerProtocol {
@@ -25,7 +29,7 @@ impl FromStr for ServerProtocol {
             "WS" => Ok(ServerProtocol::WS),
             "QUIC" => Ok(ServerProtocol::QUIC),
             "MQTT" => Ok(ServerProtocol::MQTT),
-            _  => Err(()),
+            _ => Err(()),
         }
     }
 }
@@ -43,7 +47,7 @@ impl FromStr for ClientProtocol {
 }
 
 impl EdgeHubConfig {
-    pub fn new(server_protocol: ServerProtocol, client_protocol: ClientProtocol) -> Self{
+    pub fn new(server_protocol: ServerProtocol, client_protocol: ClientProtocol) -> Self {
         EdgeHubConfig {
             server_protocol,
             client_protocol,

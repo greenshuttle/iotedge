@@ -1,6 +1,6 @@
-pub mod stream;
-mod rule;
 mod ast;
+mod rule;
+pub mod stream;
 
 #[cfg(test)]
 mod tests {

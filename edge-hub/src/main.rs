@@ -1,11 +1,11 @@
+use crate::config::config::{ClientProtocol, EdgeHubConfig, ServerProtocol};
 use clap::{App, Arg};
-use crate::config::config::{ServerProtocol, ClientProtocol, EdgeHubConfig};
 use std::str::FromStr;
 
-mod servers;
-mod config;
 mod clients;
+mod config;
 mod internal;
+mod servers;
 
 #[tokio::main]
 async fn main() {
@@ -14,20 +14,24 @@ async fn main() {
     let matches = App::new("Edge-Hub, a edge hub for edges.")
         .version("1.0")
         .about("Yang <zifeng.1024@gmail.com>")
-        .arg(Arg::new("server-protocol")
-            .long("server-protocol")
-            .value_name("SERVER_PROTOCOL")
-            .possible_values(&["WS", "ZMQ", "MQTT", "QUIC"])
-            .default_value("ZMQ")
-            .about("The server protocol that use between edge-core and edge-hub")
-            .takes_value(true))
-        .arg(Arg::new("client-protocol")
-            .long("client-protocol")
-            .value_name("CLIENT_PROTOCOL")
-            .possible_values(&["KAFKA", "PULSAR"])
-            .default_value("KAFKA")
-            .about("The client protocol that use between edge-hub and user mq")
-            .takes_value(true))
+        .arg(
+            Arg::new("server-protocol")
+                .long("server-protocol")
+                .value_name("SERVER_PROTOCOL")
+                .possible_values(&["WS", "ZMQ", "MQTT", "QUIC"])
+                .default_value("ZMQ")
+                .about("The server protocol that use between edge-core and edge-hub")
+                .takes_value(true),
+        )
+        .arg(
+            Arg::new("client-protocol")
+                .long("client-protocol")
+                .value_name("CLIENT_PROTOCOL")
+                .possible_values(&["KAFKA", "PULSAR"])
+                .default_value("KAFKA")
+                .about("The client protocol that use between edge-hub and user mq")
+                .takes_value(true),
+        )
         .get_matches();
 
     let server_protocol = matches.value_of("server-protocol").unwrap();

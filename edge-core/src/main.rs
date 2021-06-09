@@ -1,12 +1,12 @@
-mod shadow;
 mod internal;
-mod security;
-mod networks;
-mod streaming;
 mod metadata;
+mod networks;
+mod security;
+mod shadow;
+mod streaming;
 
-use internal::store::rusqlite;
 use edge_model;
+use internal::store::rusqlite;
 #[cfg(feature = "mqtt")]
 use mqtt_server::server as m_server;
 
@@ -37,7 +37,5 @@ async fn main() {
 
 fn inti_mqtt_server() {
     #[cfg(feature = "mqtt")]
-        m_server::say_hi();
+    m_server::say_hi();
 }
-
-

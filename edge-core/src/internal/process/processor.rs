@@ -1,5 +1,5 @@
-use tokio::sync::mpsc::{Sender, Receiver};
 use crate::internal::process::message::Message;
+use tokio::sync::mpsc::{Receiver, Sender};
 
 pub struct Processor {
     name: String,
@@ -7,9 +7,7 @@ pub struct Processor {
     rx: Receiver<Message>,
 }
 
-pub struct ProcessConfig {
-
-}
+pub struct ProcessConfig {}
 
 pub trait Process {
     fn init(&self);

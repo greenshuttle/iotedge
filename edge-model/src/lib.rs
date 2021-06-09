@@ -1,6 +1,6 @@
-mod security;
-mod event;
 mod device;
+mod event;
+mod security;
 
 #[cfg(test)]
 mod tests {

@@ -1,3 +1,3 @@
 mod device;
-mod service;
 mod model;
+mod service;

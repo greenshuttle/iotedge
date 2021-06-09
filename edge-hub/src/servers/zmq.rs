@@ -1,6 +1,6 @@
+use log::info;
 use std::thread;
 use std::time::Duration;
-use log::info;
 use zmq::Socket;
 
 pub async fn start() {

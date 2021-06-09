@@ -9,4 +9,3 @@ pub fn create_producer(brokers: &str) -> FutureProducer {
         .create()
         .expect("Producer create failed")
 }
-

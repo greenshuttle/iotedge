@@ -1,2 +1,2 @@
-mod processor;
 mod message;
+mod processor;
