@@ -1,10 +1,21 @@
 mod zmq;
 
-use super::config::config;
 use crate::config::config::{EdgeHubConfig, ServerProtocol};
+use crate::tenant::TenantId;
+use crate::internal::store::queue::Queue;
+use crate::message::Message;
+
+pub struct EdgeCoreTwin {
+    name: String,
+    talent_id: TenantId,
+    // every edge core use a single queue for cache messages
+    message_queue: tokio::sync::mpsc::Receiver<Message>,
+}
+
+
 
 pub async fn start(edge_hub_config: &EdgeHubConfig) {
-    let protocol = config::EdgeHubConfig::get_hub_enabled_server_protocol(edge_hub_config);
+    let protocol = EdgeHubConfig::get_hub_enabled_server_protocol(edge_hub_config);
 
     match protocol {
         ServerProtocol::ZMQ => start_zmq_server().await,
@@ -16,4 +27,8 @@ pub async fn start(edge_hub_config: &EdgeHubConfig) {
 
 async fn start_zmq_server() {
     zmq::start().await;
+}
+
+pub trait Server {
+    fn start();
 }

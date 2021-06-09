@@ -6,6 +6,8 @@ mod clients;
 mod config;
 mod internal;
 mod servers;
+pub(crate) mod tenant;
+mod message;
 
 #[tokio::main]
 async fn main() {
