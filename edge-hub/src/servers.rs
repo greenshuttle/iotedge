@@ -3,18 +3,18 @@ mod zmq;
 use super::config::config;
 use crate::config::config::{ServerProtocol, EdgeHubConfig};
 
-pub fn start(edge_hub_config: &EdgeHubConfig) {
+pub async fn start(edge_hub_config: &EdgeHubConfig) {
 
     let protocol = config::EdgeHubConfig::get_hub_enabled_server_protocol(edge_hub_config);
 
     match protocol {
-        ServerProtocol::ZMQ => start_zmq_server(),
+        ServerProtocol::ZMQ => start_zmq_server().await,
         ServerProtocol::WS => {}
         ServerProtocol::QUIC => {}
         ServerProtocol::MQTT => {}
     }
 }
 
-fn start_zmq_server() {
-    zmq::start();
+async fn start_zmq_server() {
+    zmq::start().await;
 }
