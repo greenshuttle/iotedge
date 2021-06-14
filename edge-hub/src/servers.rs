@@ -9,9 +9,13 @@ pub struct EdgeCoreTwin {
     name: String,
     talent_id: TenantId,
     // every edge core use a single queue for cache messages
-    message_queue: tokio::sync::mpsc::Receiver<Message>,
+    message_queue: tokio::sync::mpsc::Sender<Message>,
+    status: EdgeCoreStatus,
 }
 
+pub enum EdgeCoreStatus {
+    ONLINE, OFFLINE
+}
 
 
 pub async fn start(edge_hub_config: &EdgeHubConfig) {
@@ -31,4 +35,8 @@ async fn start_zmq_server() {
 
 pub trait Server {
     fn start();
+
+    fn accept();
+
+    fn init();
 }

@@ -1,6 +1,15 @@
 pub mod kafka;
 use super::config::config::{ClientProtocol, EdgeHubConfig};
 use log::info;
+use crate::message::Message;
+use crate::tenant::TenantId;
+
+
+pub struct ClientTwin {
+    name: String,
+    tenant_id: TenantId,
+    message_queue: tokio::sync::mpsc::Receiver<Message>,
+}
 
 pub fn start(edge_hub_config: &EdgeHubConfig) {
     let protocol = EdgeHubConfig::get_hub_enabled_client_protocol(edge_hub_config);
