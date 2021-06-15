@@ -1,4 +1,7 @@
 mod zmq;
+mod mqtt;
+mod quic;
+mod webscoket;
 
 use crate::config::config::{EdgeHubConfig, ServerProtocol};
 use crate::tenant::TenantId;
@@ -33,10 +36,14 @@ async fn start_zmq_server() {
     zmq::start().await;
 }
 
-pub trait Server {
-    fn start();
+async fn start_mqtt_server() {
 
-    fn accept();
+}
 
-    fn init();
+async fn start_quic_server() {
+
+}
+
+async fn start_ws_server() {
+
 }
