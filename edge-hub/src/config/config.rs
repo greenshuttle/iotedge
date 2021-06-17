@@ -18,6 +18,7 @@ pub enum ServerProtocol {
     WS,
     QUIC,
     MQTT,
+    NNG,
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -35,6 +36,7 @@ impl FromStr for ServerProtocol {
             "WS" => Ok(ServerProtocol::WS),
             "QUIC" => Ok(ServerProtocol::QUIC),
             "MQTT" => Ok(ServerProtocol::MQTT),
+            "NNG" => Ok(ServerProtocol::NNG),
             _ => Err(()),
         }
     }
