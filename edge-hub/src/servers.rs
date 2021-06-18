@@ -1,11 +1,11 @@
-mod zmq;
 mod mqtt;
+mod nng;
 mod quic;
 mod webscoket;
-mod nng;
+mod zmq;
 
 use crate::config::config::{EdgeHubConfig, ServerProtocol};
-use crate::tenant::TenantId;
+use crate::context::tenant::TenantId;
 use crate::message::Message;
 
 pub struct EdgeCoreTwin {
@@ -17,11 +17,16 @@ pub struct EdgeCoreTwin {
 }
 
 pub enum EdgeCoreStatus {
-    ONLINE, OFFLINE
+    ONLINE,
+    OFFLINE,
 }
 
 impl EdgeCoreTwin {
-    fn new(name: String, tenant_id: TenantId, message_queue: tokio::sync::mpsc::Sender<Message>) -> Self {
+    fn new(
+        name: String,
+        tenant_id: TenantId,
+        message_queue: tokio::sync::mpsc::Sender<Message>,
+    ) -> Self {
         EdgeCoreTwin {
             name,
             tenant_id,
@@ -36,7 +41,7 @@ pub async fn start(edge_hub_config: &EdgeHubConfig) {
 
     match protocol {
         ServerProtocol::ZMQ => zmq::start().await,
-        ServerProtocol::NNG => {}
+        ServerProtocol::NNG => nng::start().await,
         ServerProtocol::WS => {}
         ServerProtocol::QUIC => {}
         ServerProtocol::MQTT => {}

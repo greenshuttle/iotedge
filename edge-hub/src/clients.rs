@@ -1,9 +1,8 @@
 pub mod kafka;
 use super::config::config::{ClientProtocol, EdgeHubConfig};
-use log::info;
+use crate::context::tenant::TenantId;
 use crate::message::Message;
-use crate::tenant::TenantId;
-
+use log::info;
 
 pub struct ClientTwin {
     name: String,

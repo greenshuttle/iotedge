@@ -9,7 +9,6 @@ pub struct EdgeHubConfig {
 pub struct EdgeCoreConfig {
     // message qos,default is EOS, when need higher performance, you should set a lower message qos.
     message_qos: u8,
-
 }
 
 #[derive(Debug, Clone, PartialEq)]

@@ -4,10 +4,10 @@ use std::str::FromStr;
 
 mod clients;
 mod config;
+mod context;
 mod internal;
-mod servers;
-pub(crate) mod tenant;
 mod message;
+mod servers;
 
 #[tokio::main]
 async fn main() {
@@ -20,8 +20,8 @@ async fn main() {
             Arg::new("server-protocol")
                 .long("server-protocol")
                 .value_name("SERVER_PROTOCOL")
-                .possible_values(&["WS", "ZMQ", "MQTT", "QUIC"])
-                .default_value("ZMQ")
+                .possible_values(&["WS", "ZMQ", "MQTT", "QUIC", "NNG"])
+                .default_value("NNG")
                 .about("The server protocol that use between edge-core and edge-hub")
                 .takes_value(true),
         )

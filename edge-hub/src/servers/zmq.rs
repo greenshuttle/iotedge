@@ -11,9 +11,8 @@ pub async fn start() {
     tokio::spawn(accept_loop(responder));
 }
 
-pub async fn bind(socket: &Socket) -> &Socket {
+pub async fn bind(socket: &Socket) {
     socket.bind("tcp://*:5555").expect("Zmq bind 5555 failure");
-    socket
 }
 
 pub async fn accept_loop(responder: Socket) {
