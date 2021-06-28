@@ -1,6 +1,5 @@
 pub mod server;
 
-pub use server::say_hi;
 
 #[cfg(test)]
 mod tests {

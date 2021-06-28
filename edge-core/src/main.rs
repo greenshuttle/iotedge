@@ -36,6 +36,5 @@ async fn main() {
 }
 
 fn inti_mqtt_server() {
-    #[cfg(feature = "mqtt")]
-    m_server::say_hi();
+
 }

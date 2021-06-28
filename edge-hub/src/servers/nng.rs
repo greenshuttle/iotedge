@@ -1,12 +1,12 @@
 use log::info;
 use nng::options::protocol::pubsub::Subscribe;
 use nng::options::Options;
-use nng::{Protocol, Socket, PipeEvent};
+use nng::{PipeEvent, Protocol, Socket};
 use std::convert::TryInto;
+use std::sync::atomic::{AtomicUsize, Ordering};
+use std::sync::Arc;
 use std::thread;
 use std::time::Duration;
-use std::sync::atomic::{Ordering, AtomicUsize};
-use std::sync::Arc;
 
 pub struct Nng {}
 
@@ -21,14 +21,15 @@ pub async fn start() {
 }
 
 pub async fn publish(socket: &Socket, url: &str, count_clone: Arc<AtomicUsize>) {
-
-    socket.pipe_notify(move |_, ev| {
-        match ev {
-            PipeEvent::AddPost => count_clone.fetch_add(1, Ordering::Relaxed),
-            PipeEvent::RemovePost => count_clone.fetch_sub(1, Ordering::Relaxed),
-            _ => 0,
-        };
-    }).unwrap();
+    socket
+        .pipe_notify(move |_, ev| {
+            match ev {
+                PipeEvent::AddPost => count_clone.fetch_add(1, Ordering::Relaxed),
+                PipeEvent::RemovePost => count_clone.fetch_sub(1, Ordering::Relaxed),
+                _ => 0,
+            };
+        })
+        .unwrap();
 
     socket.listen(url).expect("Nng bind 5555 failure");
 }

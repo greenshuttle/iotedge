@@ -1,2 +1,2 @@
-pub mod tenant;
 mod region;
+pub mod tenant;
